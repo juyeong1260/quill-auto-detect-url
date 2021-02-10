@@ -4,6 +4,9 @@
   "description": "quill auto detect link",
   "main": "lib/index.js",
   "types": "lib",
+  "files": [
+    "lib"
+  ],
   "repository": "https://github.com/juyeong1260/quill-auto-detect-url",
   "author": "juyeong1260",
   "license": "MIT",
