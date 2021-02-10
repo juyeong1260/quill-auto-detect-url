@@ -1,0 +1,101 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2020,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    },
+    "import/external-module-folders": ["node_modules", "node_modules/@types"]
+  },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint",
+    "prettier/standard"
+  ],
+  "plugins": ["@typescript-eslint", "prettier"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    // prettier
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 120,
+        "semi": false,
+        "singleQuote": true,
+        "trailingComma": "es5",
+        "bracketSpacing": true,
+        "jsxBracketSameLine": true
+      }
+    ],
+    // Diable config to avoid conflict with prettier config
+    "max-len": "off",
+    "semi": "off",
+    "quotes": "off",
+    "comma-dangle": "off",
+    "object-curly-spacing": "off",
+    "array-bracket-spacing": "off",
+    // import
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          ["builtin", "external"],
+          "internal",
+          ["parent", "sibling", "index"]
+        ],
+        "newlines-between": "always"
+      }
+    ],
+    "import/default": "off",
+    "import/no-unresolved": "error",
+    "import/no-named-as-default-member": "off",
+    // rules
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": ["../*"]
+      }
+    ],
+    "no-undef": "error",
+    "no-unused-vars": "off",
+    "no-warning-comments": [
+      "warn",
+      {
+        "terms": ["todo", "fixme"],
+        "location": "anywhere"
+      }
+    ],
+    // Tslint
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-unused-vars": ["error", { "vars": "all", "args": "after-used","ignoreRestSiblings": true, "argsIgnorePattern": "^_" }]
+  }
+}
