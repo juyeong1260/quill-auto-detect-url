@@ -1,7 +1,7 @@
 {
-  "name": "quill-auto-detect-link",
+  "name": "quill-auto-detect-url",
   "version": "0.0.1",
-  "description": "quill auto detect link",
+  "description": "quill auto detect url",
   "main": "lib/index.js",
   "types": "lib",
   "files": [

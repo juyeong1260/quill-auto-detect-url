@@ -2,7 +2,7 @@
 
 This module is based on [quill-magic-url](https://www.npmjs.com/package/quill-magic-url)
 
-It was created to transform the url of the link as the user types.
+It was created to transform the url of the url as the user types.
 
 <img src="./docs/demo.gif">
 
