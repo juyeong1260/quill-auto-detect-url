@@ -43,7 +43,6 @@ export default class QuillAutoDetectUrl {
       return
     }
     const [leaf] = this.quill.getLeaf(sel.index)
-
     if (insert === '\n') {
       const [nextLeaf] = this.quill.getLeaf(sel.index + sel.length + 1)
       if (nextLeaf && nextLeaf.parent.domNode.localName === 'a') {
@@ -57,7 +56,11 @@ export default class QuillAutoDetectUrl {
         const urlMatch = url.match(this.options.urlRegularExpression)
 
         if (urlMatch) {
-          this.textToUrl(this.quill.getIndex(prevLeaf) + urlMatch.index, urlMatch[0])
+          const prevQuillIndex = this.quill.getIndex(prevLeaf) + urlMatch.index
+
+          // for mboile device (keyboard selection bug)
+          this.quill.removeFormat(prevQuillIndex, prevLeaf.text.length)
+          this.textToUrl(prevQuillIndex, urlMatch[0])
         }
       } else {
         this.transformLeaf(leaf)
@@ -69,6 +72,11 @@ export default class QuillAutoDetectUrl {
     const leafIndex = this.quill.getIndex(leaf)
     if (urlMatch) {
       this.textToUrl(leafIndex + urlMatch.index, urlMatch[0])
+
+      // for android mobile device keyboard
+      // it resolved weird phenomenon when some text infront of www.xxx.xxx link
+      this.quill.enable(false)
+      this.quill.enable(true)
     } else if (leaf.parent.domNode.localName === 'a') {
       this.quill.removeFormat(leafIndex, leaf.text?.length || 0)
     }
