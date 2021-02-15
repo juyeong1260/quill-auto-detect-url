@@ -10,9 +10,9 @@
   "dependencies": {
     "next": "latest",
     "quill": "^1.3.7",
+    "quill-auto-detect-url": "link:../",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "quill-auto-detect-url": "link:../"
+    "react-dom": "^16.12.0"
   },
   "devDependencies": {
     "@types/node": "^12.12.21",

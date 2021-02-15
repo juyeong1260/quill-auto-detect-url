@@ -1,6 +1,6 @@
 {
   "name": "quill-auto-detect-url",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "quill auto detect url",
   "main": "lib/index.js",
   "types": "lib",
@@ -40,10 +40,11 @@
     "ts-loader": "^8.0.16",
     "typescript": "^4.1.4",
     "webpack": "^5.21.2",
-    "webpack-cli": "^4.5.0"
+    "webpack-cli": "^4.5.0",
+    "url": "^0.11.0"
   },
   "dependencies": {
-    "normalize-url": "^5.3.0",
+    "normalize-url": "^4.5.0",
     "quill-delta": "^4.2.2"
   }
 }

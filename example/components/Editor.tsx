@@ -5,7 +5,7 @@ import 'quill/dist/quill.snow.css'
 
 Quill.register('modules/autoDetectUrl', QuillAutoDetectUrl)
 
-const editor: React.FC = () => {
+const Editor: React.FC = () => {
   const quillRef = useRef<Quill | null>(null)
 
   useEffect(() => {
@@ -22,4 +22,4 @@ const editor: React.FC = () => {
   return <div id="editor"></div>
 }
 
-export default editor
+export default Editor
