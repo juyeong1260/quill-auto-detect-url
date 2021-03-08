@@ -16,12 +16,45 @@ export type QuillAutoDetectUrlOptions = { [key: string]: any } & {
 export default class QuillAutoDetectUrl {
   private quill: Quill
   private options: QuillAutoDetectUrlOptions
+  private globalRegularExpression: RegExp
+
   constructor(quill: Quill, options: QuillAutoDetectUrlOptions) {
     this.quill = quill
     options = options || {}
 
     this.options = { ...defaults, ...options }
+    this.globalRegularExpression = new RegExp(this.options.urlRegularExpression, 'gi')
+    this.registerPasteListener()
     this.registerTypeListener()
+  }
+  private registerPasteListener() {
+    this.quill.clipboard.addMatcher(Node.TEXT_NODE, (node: any, delta: any) => {
+      if (typeof node.data !== 'string') {
+        return
+      }
+      const urlRegExp = this.globalRegularExpression
+      urlRegExp.lastIndex = 0
+      const newDelta = new Delta()
+      let index = 0
+      let urlResult = urlRegExp.exec(node.data)
+      const handleMatch = (result: any, regExp: any) => {
+        const head = node.data.substring(index, result.index)
+        newDelta.insert(head)
+        const match = result[0]
+        newDelta.insert(match, { link: this.urlNormalizer(match) })
+        index = regExp.lastIndex
+        return regExp.exec(node.data)
+      }
+      while (urlResult !== null) {
+        urlResult = handleMatch(urlResult, urlRegExp)
+      }
+      if (index > 0) {
+        const tail = node.data.substring(index)
+        newDelta.insert(tail)
+        delta.ops = newDelta.ops
+      }
+      return delta
+    })
   }
   private registerTypeListener() {
     this.quill.on('text-change', (delta) => {
