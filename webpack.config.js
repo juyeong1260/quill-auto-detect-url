@@ -50,4 +50,5 @@ module.exports = {
       },
     ],
   },
+  externals: [/normalize-url/, /quill-delta/],
 }
