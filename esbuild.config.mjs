@@ -22,9 +22,7 @@ const build = async () => {
     }),
   ])
 
-  await Promise.all(ctxs.map((ctx) => ctx.watch()))
-
-  // await Promise.all(ctxs.map((ctx) => ctx.rebuild().then(() => ctx.dispose())))
+  await Promise.all(ctxs.map((ctx) => ctx.rebuild().then(() => ctx.dispose())))
 }
 
 build()
