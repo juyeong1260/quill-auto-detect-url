@@ -13,7 +13,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: https://registry.npmjs.org/
       - name: Cache node_modules
         uses: actions/cache@v4
         id: yarn-cache
@@ -22,6 +21,8 @@ jobs:
           key: ${{ runner.os }}-${GITHUB_REF##*/}-yarn-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-master-yarn-${{ hashFiles('yarn.lock') }}
+      - name: Enable Corepack
+        run: corepack enable
       - name: Install Dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn
