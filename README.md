@@ -4,6 +4,8 @@ This module is based on [quill-magic-url](https://www.npmjs.com/package/quill-ma
 
 It was created to transform the url of the url as the user types.
 
+This library supports Quill Version 2 starting from version 1
+
 <img src="./docs/demo.gif">
 
 ## [Demo](https://quill-auto-detect-url.bucky.im)
