@@ -9,7 +9,7 @@
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "i18n-ally.localesPaths": "src/locales",
   "i18n-ally.keystyle": "nested"

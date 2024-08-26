@@ -1,50 +1,59 @@
 {
   "name": "quill-auto-detect-url",
-  "version": "0.2.1",
+  "version": "1.0.0-alpha.0",
   "description": "quill auto detect url",
-  "main": "lib/index.js",
+  "main": "./lib/index.js",
+  "module": "./lib/index.mjs",
   "types": "lib",
-  "files": [
-    "lib"
-  ],
+  "type": "module",
   "repository": "https://github.com/juyeong1260/quill-auto-detect-url",
   "author": "juyeong1260",
   "license": "MIT",
-  "private": false,
   "scripts": {
-    "build": "NODE_ENV=production webpack",
-    "dev": "webpack --watch",
-    "lint": "eslint \"./src/*.ts\""
+    "build": "yarn build:js | yarn build:tsc",
+    "build:js": "node ./esbuild.config.mjs",
+    "build:tsc": "tsc",
+    "lint": "eslint --config eslint.config.js ./src --report-unused-disable-directives --max-warnings 0"
   },
   "keywords": [
     "quill",
     "url",
     "links"
   ],
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.js",
+      "types": "./lib/index.d.ts"
+    }
+  },
+  "files": [
+    "lib",
+    "package.json",
+    "src",
+    "README.md",
+    "tsconfig.json"
+  ],
   "devDependencies": {
-    "@babel/core": "^7.12.13",
-    "@babel/preset-env": "^7.12.13",
-    "@types/quill": "^2.0.5",
-    "@typescript-eslint/eslint-plugin": "^4.15.0",
-    "@typescript-eslint/parser": "^4.15.0",
-    "babel-loader": "^8.2.2",
-    "eslint": "^7.19.0",
-    "eslint-config-prettier": "^7.2.0",
-    "eslint-import-resolver-typescript": "^2.3.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-standard": "^5.0.0",
-    "prettier": "^2.2.1",
-    "quill": "^1.3.7",
-    "terser-webpack-plugin": "^5.1.1",
-    "ts-loader": "^8.0.16",
-    "typescript": "^4.1.4",
-    "webpack": "^5.21.2",
-    "webpack-cli": "^4.5.0",
-    "url": "^0.11.0"
+    "@eslint/compat": "^1.0.1",
+    "@eslint/js": "^9.3.0",
+    "esbuild": "^0.21.3",
+    "eslint": "9.x",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "parchment": "^3.0.0",
+    "prettier": "^3.2.5",
+    "quill": "^2.0.2",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.10.0"
+  },
+  "peerDependencies": {
+    "quill": ">=2",
+    "quill-detla": ">=5"
   },
   "dependencies": {
-    "normalize-url": "^4.5.0",
-    "quill-delta": "^4.2.2"
-  }
+    "normalize-url": "^8.0.1"
+  },
+  "packageManager": "yarn@4.4.1"
 }
