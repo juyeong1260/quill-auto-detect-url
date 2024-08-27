@@ -1339,11 +1339,12 @@ __metadata:
     parchment: "npm:^3.0.0"
     prettier: "npm:^3.2.5"
     quill: "npm:^2.0.2"
+    quill-delta: "npm:^5.1.0"
     typescript: "npm:^5.4.5"
     typescript-eslint: "npm:^7.10.0"
   peerDependencies:
     quill: ">=2"
-    quill-detla: ">=5"
+    quill-delta: ">=5"
   languageName: unknown
   linkType: soft
 

@@ -45,12 +45,13 @@
     "parchment": "^3.0.0",
     "prettier": "^3.2.5",
     "quill": "^2.0.2",
+    "quill-delta": "^5.1.0",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.10.0"
   },
   "peerDependencies": {
     "quill": ">=2",
-    "quill-detla": ">=5"
+    "quill-delta": ">=5"
   },
   "dependencies": {
     "normalize-url": "^8.0.1"
