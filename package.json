@@ -1,6 +1,6 @@
 {
   "name": "quill-auto-detect-url",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "description": "quill auto detect url",
   "main": "./lib/index.js",
   "module": "./lib/index.mjs",
